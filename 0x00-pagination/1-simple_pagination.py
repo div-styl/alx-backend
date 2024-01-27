@@ -2,7 +2,7 @@
 """Simple pagination"""
 import csv
 import math
-from typing import List
+from typing import List, Tuple
 
 
 class Server:
@@ -24,7 +24,7 @@ class Server:
         return self.__dataset
 
     @staticmethod
-    def index_range(page: int, page_size: int) -> tuple[int, int]:
+    def index_range(page: int, page_size: int) -> Tuple[int, int]:
         """returns index and an end of the range"""
         return ((page - 1) * page_size, page * page_size)
 
