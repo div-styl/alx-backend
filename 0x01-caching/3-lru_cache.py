@@ -37,14 +37,14 @@ class LRUCache(BaseCaching):
                 self.usedKeys.append(
                     self.usedKeys.pop(self.usedKeys.index(key))
                 )
-            if len(self.usedKeys) >= BaseCaching.MAX_ITEMS:
+            if len(self.usedKeys) > BaseCaching.MAX_ITEMS:
                 lru = self.usedKeys.pop(0)
                 del self.cache_data[lru]
                 print("DISCARD: {:s}".format(lru))
 
     def get(self, key):
         """get"""
-        if key is None and key not in self.cache_data.keys():
+        if key is not None and key in self.cache_data.keys():
             self.usedKeys.append(self.usedKeys.pop(self.usedKeys.index(key)))
             return self.cache_data.get(key)
         return None
