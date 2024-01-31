@@ -11,29 +11,15 @@ class FIFOCache(BaseCaching):
         """init"""
         super().__init__()
 
-    def first_key(self, dict):
-        """return first key"""
-        mlist = [i for i in self.cache_data.keys()]
-        return mlist[0]
     def put(self, key, item):
         """put"""
-        if key is None or item is None:
-            return
-        if key is not None or item is not None:
-            if len(self.cache_data) >= self.MAX_ITEMS:
-                if self.cache_data.get(key) is not None:
-                    self.cache_data.pop(key)
-                    self.cache_data[key] = item
-                else:
-                    discard = self.first_key(self.cache_data)
-                    del self.cache_data[self.first_key(self.cache_data)]
-                    print("DISCARD: {}".format(discard))
+        if key and item and self.get(key) != item:
             self.cache_data[key] = item
-            return self.cache_data
-
+            if len(self.cache_data) > BaseCaching.MAX_ITEMS:
+                lkey = next(iter(self.cache_data))
+                self.cache_data.pop(lkey)
+                print("DISCARD: {}".format(lkey))
 
     def get(self, key):
         """get"""
-        if key is not None or key in self.cache_data.keys():
-            return self.cache_data.get(key)
-        return None
+        return self.cache_data.get(key, None)
