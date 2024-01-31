@@ -11,6 +11,10 @@ class FIFOCache(BaseCaching):
         """init"""
         super().__init__()
 
+    def first_key(self, dict):
+        """return first key"""
+        mlist = [i for i in self.cache_data.keys()]
+        return mlist[0]
     def put(self, key, item):
         """put"""
         if key is None or item is None:
