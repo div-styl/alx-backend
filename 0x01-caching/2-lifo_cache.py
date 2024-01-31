@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 """
-Create a class LIFOCache that inherits 
+Create a class LIFOCache that inherits
 from BaseCaching and is a caching system:
 
 You must use self.cache_data - dictionary from the parent class BaseCaching
-You can overload def __init__(self): but don’t forget to call the parent init: super().__init__()
+You can overload def __init__(self):
+but don’t forget to call the parent init: super().__init__()
 def put(self, key, item):
 Must assign to the dictionary self.cache_data the item value for the key key.
 If key or item is None, this method should not do anything.
@@ -33,8 +34,7 @@ class LIFOCache(BaseCaching):
             pass
         else:
             if len(self.cache_data) >= BaseCaching.MAX_ITEMS \
-                and key not in self.cache_data.keys():
-                
+                    and key not in self.cache_data.keys():
                 lkey, last_val = self.cache.popitem()
                 print("DISCARD: {}".format(lkey))
         self.cache_data[key] = item
