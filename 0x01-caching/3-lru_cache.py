@@ -29,7 +29,7 @@ class LRUCache(BaseCaching):
         self.usedKeys = []
 
     def put(self, key, item):
-        """put"""
+        """return cache"""
         if key is not None and item is not None:
             self.cache_data[key] = item
             if key not in self.usedKeys:
@@ -44,7 +44,7 @@ class LRUCache(BaseCaching):
                 print("DISCARD: {:s}".format(lru))
 
     def get(self, key):
-        """get"""
+        """return and item from the cache"""
         if key is not None and key in self.cache_data.keys():
             self.usedKeys.append(self.usedKeys.pop(self.usedKeys.index(key)))
             return self.cache_data.get(key)

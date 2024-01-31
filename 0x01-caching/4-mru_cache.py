@@ -27,7 +27,7 @@ class MRUCache(BaseCaching):
         self.keys = []
 
     def put(self, key, item):
-        """put"""
+        """return and item from the cache"""
         if key is not None and item is not None:
             self.cache_data[key] = item
             if key not in self.keys:
@@ -42,7 +42,7 @@ class MRUCache(BaseCaching):
                 print("DISCARD: {}".format(discard))
 
     def get(self, key):
-        """get"""
+        """return and item from the cache"""
         if key is not None and key in self.cache_data:
             self.keys.append(
                 self.keys.pop(self.keys.index(key))
