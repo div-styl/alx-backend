@@ -5,8 +5,7 @@ from typing import (
     Union
 )
 from flask import Flask
-from flask import render_template
-from flask import request, g
+from flask import request, g, render_template
 from flask_babel import Babel
 
 
@@ -29,8 +28,6 @@ def get_locale() -> str:
     if locale and locale in Config.LANGUAGES:
         return locale
     return request.accept_languages.best_match(app.config['LANGUAGES'])
-
-# babel.init_app(app, locale_selector=get_locale)
 
 
 users = {
