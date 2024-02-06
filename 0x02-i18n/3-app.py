@@ -18,7 +18,7 @@ babel = Babel(app)
 
 
 @babel.localeselector
-def get_local() -> str:
+def get_locale() -> str:
     """return the local request object"""
     return request.accept_languages.best_match(app.config['LANGUAGES'])
 
@@ -26,7 +26,7 @@ def get_local() -> str:
 @app.route("/", strict_slashes=False)
 def index() -> str:
     """render the 0-index.html template"""
-    return render_template('3-index.html')
+    return render_template('2-index.html')
 
 
 if __name__ == '__main__':
